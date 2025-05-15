@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Build ứng dụng
-RUN gradle installDist
+RUN ./gradlew installDist
 
 # Sử dụng image nhẹ để chạy ứng dụng
 FROM openjdk:17-jdk-slim
