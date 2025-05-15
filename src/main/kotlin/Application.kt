@@ -16,12 +16,13 @@ fun Application.module() {
     configureMonitoring()
     configureRouting()
 
-    val base64Credentials = System.getenv("FIREBASE_CREDENTIALS")
+    val rawJson = System.getenv("FIREBASE_CREDENTIALS")
         ?: error("FIREBASE_CREDENTIALS is not set")
 
-    val credentialsStream = ByteArrayInputStream(Base64.getDecoder().decode(base64Credentials))
+    val serviceAccount = ByteArrayInputStream(rawJson.toByteArray())
+
     val option = FirebaseOptions.builder()
-        .setCredentials(GoogleCredentials.fromStream(credentialsStream))
+        .setCredentials(GoogleCredentials.fromStream(serviceAccount))
         .build()
 
     FirebaseApp.initializeApp(option)
