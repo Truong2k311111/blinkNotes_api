@@ -9,22 +9,9 @@ group = "com"
 version = "0.0.1"
 
 application {
-    mainClass.set("com.ApplicationKt")
+    mainClass.set("io.ktor.server.netty.EngineMain")
 }
-tasks {
-    named<Jar>("jar") {
-        manifest {
-            attributes["Main-Class"] = "com.ApplicationKt"
-        }
-    }
 
-    // Shadow jar nếu dùng plugin 'com.github.johnrengelman.shadow'
-    register<JavaExec>("runJar") {
-        group = "application"
-        mainClass.set("com.ApplicationKt")
-        classpath = sourceSets.main.get().runtimeClasspath
-    }
-}
 
 repositories {
     mavenCentral()
