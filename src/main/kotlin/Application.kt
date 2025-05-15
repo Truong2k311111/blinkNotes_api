@@ -14,7 +14,7 @@ fun Application.module() {
     configureMonitoring()
     configureRouting()
 
-    val serviceAccountStream = this::class.java.classLoader.getResourceAsStream("")
+    val serviceAccountStream = this::class.java.classLoader.getResourceAsStream("appmobileshop-b7ca3-firebase-adminsdk-ag2tr-15c00fcf34.json")
 
     val option = FirebaseOptions.builder()
         .setCredentials(GoogleCredentials.fromStream(serviceAccountStream))
