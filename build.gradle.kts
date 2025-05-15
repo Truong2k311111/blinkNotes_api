@@ -9,7 +9,21 @@ group = "com"
 version = "0.0.1"
 
 application {
-    mainClass = "io.ktor.server.netty.EngineMain"
+    mainClass.set("com.ApplicationKt")
+}
+tasks {
+    named<Jar>("jar") {
+        manifest {
+            attributes["Main-Class"] = "com.ApplicationKt"
+        }
+    }
+
+    // Shadow jar nếu dùng plugin 'com.github.johnrengelman.shadow'
+    register<JavaExec>("runJar") {
+        group = "application"
+        mainClass.set("com.ApplicationKt")
+        classpath = sourceSets.main.get().runtimeClasspath
+    }
 }
 
 repositories {
