@@ -3,4 +3,4 @@ ktor:
         modules:
             - com.ApplicationKt.module
     deployment:
-        port:4040
+        port: 4040
